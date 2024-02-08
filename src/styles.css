@@ -21,6 +21,7 @@ body {
 
 main {
   background-color: #000;
+  border-radius: 25px;
   padding: 40px;
 }
 
