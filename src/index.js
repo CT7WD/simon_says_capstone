@@ -7,7 +7,7 @@
  const statusSpan = document.querySelector(".js-status"); // Use querySelector() to get the status element
  const heading = document.querySelector(".js-heading"); // Use querySelector() to get the heading element
  const padContainer = document.querySelector(".js-pad-container"); // Use querySelector() to get the heading element
- // const gameLevel = document.getElementById("level").value;
+ // const startPopup = document.getElementById("popup");
 /**
  * VARIABLES
  */
@@ -58,7 +58,28 @@ let roundCount = 0; // track the number of rounds that have been played so far
 /**
  * EVENT LISTENERS
  */
+/*// Get the popup element
+const popup = document.querySelector('.popup');
 
+// Add a mouseover event listener to the paragraph
+popup.addEventListener('mouseover', function() {
+    // Show the popup
+    popup.style.display = 'block';
+});
+
+// Add a mouseout event listener to the paragraph
+popup.addEventListener('mouseout', function() {
+    // Hide the popup
+    popup.style.display = 'none';
+});*/
+
+window.onload = (event) => {
+    console.log("Page has loaded");
+    startButton.classList.add("unclickable");
+    // startButton.addEventListener("mouseover", () => {
+    //     alert("Please choose a Difficulty Level first!")
+    // })
+}
 padContainer.addEventListener("click", padHandler);
 // TODO: Add an event listener `startButtonHandler()` to startButton.
 startButton.addEventListener("click", startButtonHandler);
@@ -83,10 +104,10 @@ startButton.addEventListener("click", startButtonHandler);
  */
 function startButtonHandler() {
   // TODO: Write your code here.
-  // console.log("Clicked!")
   setLevel();
   roundCount++;
   startButton.classList.add("hidden");
+  document.querySelector("label").classList.add("hidden")
   statusSpan.classList.remove("hidden");
   playComputerTurn();
 
@@ -128,10 +149,12 @@ function padHandler(event) {
 
 function getLevel(){
     let level = document.getElementById("level").value
-    console.log(level);
+    startButton.classList.remove("unclickable");
     return level;
 }
 
+/*let newGameLevel = getLevel();
+console.log(newGameLevel);*/
 /**
  * Sets the level of the game given a `level` parameter.
  * Returns the length of the sequence for a valid `level` parameter (1 - 4) or an error message otherwise.
@@ -153,19 +176,25 @@ function getLevel(){
  * setLevel(8) //> returns "Please enter level 1, 2, 3, or 4";
  *
  */
-function setLevel(level = 1) {
+function setLevel(level = 0) {
   // TODO: Write your code here.
   const levelRange = [8, 8, 14, 20, 31];
-  // level = getLevel();
-  for(let i = 1; i <=4; i++) {
-      if(level === i) {
-          maxRoundCount = levelRange[i - 1];
-          return maxRoundCount;
-      }
+  level = getLevel();
+  if (level > 4){
+    alert(`Please enter level 1, 2, 3, or 4.`);
   }
-  return `Please enter level 1, 2, 3, or 4.`;
-
+  maxRoundCount = levelRange[level];
+  return maxRoundCount;
+    /*if(level === 0) {
+       return maxRoundCount = levelRange[0];
+    } else if (level > 4) {
+        alert(`Please enter level 1, 2, 3, or 4.`);
+    } else {
+        level = getLevel();
+        return maxRoundCount = levelRange[level];
+    }*/
 }
+
 
 /**
  * Returns a randomly selected item from a given array.

@@ -157,10 +157,22 @@ button {
   /* transform: translateY(10px); */
   transform: scale(.95);
 }
-
+label {
+  display: block;
+  margin-bottom: 1.25rem;
+}
 .hidden {
   display: none;
 }
+.popup {
+  border-radius: 25px;
+  position: absolute;
+  display: none;
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 10px;
+}
+
 
 .unclickable {
    pointer-events: none;

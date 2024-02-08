@@ -13,7 +13,7 @@
       <header>
          <h1 class="heading js-heading">SIMON SAYS</h1>
         <div class="dropdown">
-<!--        <label for="level">Choose a Difficulty Level:</label>-->
+        <label for="level">Choose a Difficulty Level first!</label>
         <select name="level" id="level" onchange="getLevel()">
           <option>Choose A Difficulty Level</option>
           <option value="1">1: 8 sequences</option>
@@ -22,10 +22,13 @@
           <option value="4">4: 31 sequences</option>
         </select>
         </div>
-      </header>
-     
 
-      <section class="game-controls">
+      </header>
+<!--        <div class="hidden popup" id="popup">-->
+<!--            "Please choose a Difficulty Level first!"-->
+<!--        </div>-->
+
+      <section class="game-controls" id="game-controls">
         <!--TODO: Add the start button -->
         <button class="start-button js-start-button">START</button>
         <span class="status hidden js-status"></span>
